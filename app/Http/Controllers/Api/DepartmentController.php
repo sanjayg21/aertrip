@@ -42,7 +42,7 @@ class DepartmentController extends BaseController
    
         $department = Department::create($input);
    
-        return $this->sendResponse(new ProductResource($department), 'Department created successfully.');
+        return $this->sendResponse(new DepartmentResource($department), 'Department created successfully.');
     } 
    
     /**
@@ -57,7 +57,7 @@ class DepartmentController extends BaseController
   
         if (is_null($department)) 
         {
-            return $this->sendError('Product not found.');
+            return $this->sendError('Department not found.');
         }
    
         return $this->sendResponse(new DepartmentResource($department), 'Department retrieved successfully.');
