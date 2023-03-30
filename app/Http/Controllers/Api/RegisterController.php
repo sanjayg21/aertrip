@@ -55,4 +55,22 @@ class RegisterController extends BaseController
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         } 
     }
+    
+    /**
+     * Search user api
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function search($name)
+    {
+        $result = User::where('name', 'LIKE', '%'. $name. '%')->get();
+        if(count($result))
+        {
+            return $this->sendResponse($result, 'User search successful.');
+        }
+        else
+        {
+            return $this->sendError('User Data not found for '.$name, array());
+        }
+    }
 }

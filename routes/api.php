@@ -26,12 +26,13 @@ use App\Http\Controllers\Api\AddressController;
 Route::controller(RegisterController::class)->group(function(){
     Route::post('register', 'register');
     Route::post('login', 'login');
+    Route::get('search/{name}','search');
 });
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('departments', DepartmentController::class);
     Route::resource('contacts', ContactController::class);
-    Route::resource('addresses', AddressController::class);
+    Route::resource('addresses', AddressController::class);    
 });
 
 //Route::resource('departments', DepartmentController::class);
