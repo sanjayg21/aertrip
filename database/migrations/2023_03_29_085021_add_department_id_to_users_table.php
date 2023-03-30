@@ -16,7 +16,7 @@ class AddDepartmentIdToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->integer('department_id')->nullable($value = true);
             
-            $table->foreign('department_id')->references('department_id')->on('departments');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 

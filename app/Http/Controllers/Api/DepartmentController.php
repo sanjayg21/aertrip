@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Models\Department;
+use App\Models\User;
 use Validator;
 use App\Http\Resources\DepartmentResource;
 
@@ -96,6 +97,15 @@ class DepartmentController extends BaseController
      */
     public function destroy(Department $department)
     {
+        // Check if department is assign to any user.
+        $department_id = $department->id;
+        $users = User::where('department_id', $department_id)->get();
+        
+        if($users->count() > 0)
+        {
+            return $this->sendError('Employees are assigned to this department, you are not allowed to delete this depatment.');
+        }
+        
         $department->delete();
    
         return $this->sendResponse([], 'Department deleted successfully.');
