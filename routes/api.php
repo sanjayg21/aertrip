@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::controller(RegisterController::class)->group(function(){
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('departments', DepartmentController::class);
+    Route::resource('contacts', ContactController::class);
 });
 
 //Route::resource('departments', DepartmentController::class);
