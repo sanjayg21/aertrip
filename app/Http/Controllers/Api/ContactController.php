@@ -33,7 +33,7 @@ class ContactController extends BaseController
    
         $validator = Validator::make($input, [
             'user_id' => 'required',
-            'phone_number' => 'required'
+            'phone_number' => 'required|numeric'
         ]);
    
         if($validator->fails())
@@ -77,7 +77,7 @@ class ContactController extends BaseController
    
         $validator = Validator::make($input, [
             'user_id' => 'required',
-            'phone_number' => 'required'
+            'phone_number' => 'required|numeric'
         ]);
    
         if($validator->fails()){
