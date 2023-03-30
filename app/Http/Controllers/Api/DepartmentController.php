@@ -40,9 +40,9 @@ class DepartmentController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());       
         }
    
-        $product = Department::create($input);
+        $department = Department::create($input);
    
-        return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
+        return $this->sendResponse(new ProductResource($department), 'Department created successfully.');
     } 
    
     /**
